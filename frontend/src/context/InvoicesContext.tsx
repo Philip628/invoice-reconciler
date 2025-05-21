@@ -17,6 +17,7 @@ interface GoodsReceiptMatch {
 interface InvoicesContextType {
   reconciledInvoices: Record<string, ReconciledInvoice[]>;
   addReconciledInvoice: (contractId: string, invoiceData: any, fileName?: string) => void;
+  addReconciledInvoice: (contractId: string, invoiceData: any) => void;
   purchaseOrders: File[];
   addPurchaseOrders: (files: File[]) => void;
   goodsReceipts: File[];
@@ -36,6 +37,11 @@ export function InvoicesProvider({ children }: { children: ReactNode }) {
     setReconciledInvoices(prev => ({
       ...prev,
       [contractId]: [...(prev[contractId] || []), { contract_id: contractId, invoice_data: invoiceData, fileName }]
+
+  const addReconciledInvoice = (contractId: string, invoiceData: any) => {
+    setReconciledInvoices(prev => ({
+      ...prev,
+      [contractId]: [...(prev[contractId] || []), { contract_id: contractId, invoice_data: invoiceData }]
     }));
   };
 
@@ -75,6 +81,7 @@ export function InvoicesProvider({ children }: { children: ReactNode }) {
       goodsReceipts,
       addGoodsReceipts,
       goodsReceiptMatches
+      addGoodsReceipts
     }}>
       {children}
     </InvoicesContext.Provider>

@@ -11,6 +11,7 @@ export default function GRNUpload({ className }: { className?: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const [success, setSuccess] = useState('');
   const { addGoodsReceipts, goodsReceipts } = useInvoices();
+  const { addGoodsReceipts } = useInvoices();
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -90,7 +91,6 @@ export default function GRNUpload({ className }: { className?: string }) {
               <AlertDescription>{success}</AlertDescription>
             </Alert>
           )}
-
           {goodsReceipts.length > 0 && (
             <div className="space-y-2 mt-4">
               <p className="font-medium">Uploaded GRNs:</p>
@@ -103,7 +103,6 @@ export default function GRNUpload({ className }: { className?: string }) {
               </ul>
             </div>
           )}
-
           <Button type="submit" className="w-full" disabled={files.length === 0}>
             Add Goods Receipts
           </Button>

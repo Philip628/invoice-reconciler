@@ -12,6 +12,7 @@ This is a full-stack web app showing how to use LlamaCloud with the LlamaIndex.T
 6. Each invoice is matched to the correct contract and the two are reconciled
 7. The app flags any discrepancies and shows the results
 
+
 ## Under the hood
 
 1. The user "logs in" by providing a LlamaCloud API key. This is used to create a LlamaCloud index. (The API key is stored in localStorage, as are other settings. This is not a good practice, but it kept the code simple for a demonstration)
