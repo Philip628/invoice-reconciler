@@ -116,6 +116,8 @@ export default function InvoiceUpload() {
 
   // Function to start the reconciliation process
   const startReconciliation = async (jobId: string) => {
+    const entry = uploadedFiles.find(f => f.job_id === jobId);
+    const fileName = entry?.fileName;
     const apiKey = localStorage.getItem('apiKey');
     const indexId = localStorage.getItem('index_id');
     const projectId = localStorage.getItem('project_id');
@@ -144,7 +146,7 @@ export default function InvoiceUpload() {
       if (response.ok) {
         const data = await response.json();
         // Add the reconciled invoice data to the context
-        addReconciledInvoice(data.contractId, data);
+        addReconciledInvoice(data.contractId, data, fileName);
         console.log(`Reconciled invoice added for contract ${data.contractId}`);
         
         // Update the file status to show reconciliation is complete

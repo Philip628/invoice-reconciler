@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     
     let index = 0;
     while (formData.has(`file_${index}`)) {
-      const file = formData.get(`file_${index}`) as File;
+      const file = formData.get(`file_${index}`) as unknown as File;
       if (file instanceof File) {
         files.push(file);
       }
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       console.log(`Processing file: ${file.name}`);
       
       const uploadFormData = new FormData();
-      uploadFormData.append('file', file);
+      uploadFormData.append('file', file as any);
       
       const uploadUrl = `https://api.cloud.llamaindex.ai/api/v1/parsing/upload?organization_id=${organizationId}&project_id=${projectId}`;
       

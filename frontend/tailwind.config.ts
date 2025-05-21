@@ -93,7 +93,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["ui-sans-serif", "system-ui", "sans-serif"],
       },
       fontSize: {
         "2xs": "0.625rem",
