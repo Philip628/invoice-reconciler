@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Login from '@/components/Login';
 import ContractUpload from '@/components/ContractUpload';
+import POUpload from '@/components/POUpload';
+import GRNUpload from '@/components/GRNUpload';
 import ContractsList from '@/components/ContractsList';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -93,9 +95,11 @@ export default function Home() {
               </Alert>
             </div>
           )}
-          <div className="ml-64 max-w-2xl mx-auto px-4 pt-4">
+          <div className="ml-64 max-w-2xl mx-auto px-4 pt-4 space-y-6">
             <InvoicesProvider>
-              <ContractUpload className="mb-6" />
+              <ContractUpload className="" />
+              <POUpload />
+              <GRNUpload />
               <ContractsList />
             </InvoicesProvider>
           </div>

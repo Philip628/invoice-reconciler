@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { File } from 'buffer';
 
 export async function POST(req: NextRequest) {
   try {

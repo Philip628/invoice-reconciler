@@ -10,12 +10,18 @@ interface ReconciledInvoice {
 interface InvoicesContextType {
   reconciledInvoices: Record<string, ReconciledInvoice[]>;
   addReconciledInvoice: (contractId: string, invoiceData: any) => void;
+  purchaseOrders: File[];
+  addPurchaseOrders: (files: File[]) => void;
+  goodsReceipts: File[];
+  addGoodsReceipts: (files: File[]) => void;
 }
 
 const InvoicesContext = createContext<InvoicesContextType | undefined>(undefined);
 
 export function InvoicesProvider({ children }: { children: ReactNode }) {
   const [reconciledInvoices, setReconciledInvoices] = useState<Record<string, ReconciledInvoice[]>>({});
+  const [purchaseOrders, setPurchaseOrders] = useState<File[]>([]);
+  const [goodsReceipts, setGoodsReceipts] = useState<File[]>([]);
 
   const addReconciledInvoice = (contractId: string, invoiceData: any) => {
     setReconciledInvoices(prev => ({
@@ -24,8 +30,23 @@ export function InvoicesProvider({ children }: { children: ReactNode }) {
     }));
   };
 
+  const addPurchaseOrders = (files: File[]) => {
+    setPurchaseOrders(prev => [...prev, ...files]);
+  };
+
+  const addGoodsReceipts = (files: File[]) => {
+    setGoodsReceipts(prev => [...prev, ...files]);
+  };
+
   return (
-    <InvoicesContext.Provider value={{ reconciledInvoices, addReconciledInvoice }}>
+    <InvoicesContext.Provider value={{
+      reconciledInvoices,
+      addReconciledInvoice,
+      purchaseOrders,
+      addPurchaseOrders,
+      goodsReceipts,
+      addGoodsReceipts
+    }}>
       {children}
     </InvoicesContext.Provider>
   );
