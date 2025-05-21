@@ -10,6 +10,7 @@ import { useInvoices } from '@/context/InvoicesContext';
 export default function GRNUpload({ className }: { className?: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const [success, setSuccess] = useState('');
+  const { addGoodsReceipts, goodsReceipts } = useInvoices();
   const { addGoodsReceipts } = useInvoices();
 
   const handleDrop = useCallback((e: React.DragEvent) => {
@@ -90,7 +91,18 @@ export default function GRNUpload({ className }: { className?: string }) {
               <AlertDescription>{success}</AlertDescription>
             </Alert>
           )}
-
+          {goodsReceipts.length > 0 && (
+            <div className="space-y-2 mt-4">
+              <p className="font-medium">Uploaded GRNs:</p>
+              <ul className="space-y-1 text-sm">
+                {goodsReceipts.map((file, idx) => (
+                  <li key={idx} className="bg-gray-100 p-2 rounded">
+                    {file.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <Button type="submit" className="w-full" disabled={files.length === 0}>
             Add Goods Receipts
           </Button>

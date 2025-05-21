@@ -6,6 +6,7 @@ import Login from '@/components/Login';
 import ContractUpload from '@/components/ContractUpload';
 import POUpload from '@/components/POUpload';
 import GRNUpload from '@/components/GRNUpload';
+import GoodsReceiptMatches from '@/components/GoodsReceiptMatches';
 import ContractsList from '@/components/ContractsList';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -100,6 +101,7 @@ export default function Home() {
               <ContractUpload className="" />
               <POUpload />
               <GRNUpload />
+              <GoodsReceiptMatches />
               <ContractsList />
             </InvoicesProvider>
           </div>
