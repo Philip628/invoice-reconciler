@@ -11,7 +11,6 @@ export default function POUpload({ className }: { className?: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const [success, setSuccess] = useState('');
   const { addPurchaseOrders, purchaseOrders } = useInvoices();
-  const { addPurchaseOrders } = useInvoices();
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();

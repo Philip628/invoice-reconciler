@@ -11,7 +11,6 @@ export default function GRNUpload({ className }: { className?: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const [success, setSuccess] = useState('');
   const { addGoodsReceipts, goodsReceipts } = useInvoices();
-  const { addGoodsReceipts } = useInvoices();
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();

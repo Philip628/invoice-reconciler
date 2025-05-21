@@ -8,6 +8,7 @@ import POUpload from '@/components/POUpload';
 import GRNUpload from '@/components/GRNUpload';
 import GoodsReceiptMatches from '@/components/GoodsReceiptMatches';
 import ContractsList from '@/components/ContractsList';
+import InvoiceUpload from '@/components/InvoiceUpload';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { InvoicesProvider } from '@/context/InvoicesContext';
@@ -103,6 +104,7 @@ export default function Home() {
               <GRNUpload />
               <GoodsReceiptMatches />
               <ContractsList />
+              <InvoiceUpload />
             </InvoicesProvider>
           </div>
         </>

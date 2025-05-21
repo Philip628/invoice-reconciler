@@ -17,7 +17,6 @@ interface GoodsReceiptMatch {
 interface InvoicesContextType {
   reconciledInvoices: Record<string, ReconciledInvoice[]>;
   addReconciledInvoice: (contractId: string, invoiceData: any, fileName?: string) => void;
-  addReconciledInvoice: (contractId: string, invoiceData: any) => void;
   purchaseOrders: File[];
   addPurchaseOrders: (files: File[]) => void;
   goodsReceipts: File[];
@@ -36,12 +35,10 @@ export function InvoicesProvider({ children }: { children: ReactNode }) {
   const addReconciledInvoice = (contractId: string, invoiceData: any, fileName?: string) => {
     setReconciledInvoices(prev => ({
       ...prev,
-      [contractId]: [...(prev[contractId] || []), { contract_id: contractId, invoice_data: invoiceData, fileName }]
-
-  const addReconciledInvoice = (contractId: string, invoiceData: any) => {
-    setReconciledInvoices(prev => ({
-      ...prev,
-      [contractId]: [...(prev[contractId] || []), { contract_id: contractId, invoice_data: invoiceData }]
+      [contractId]: [
+        ...(prev[contractId] || []),
+        { contract_id: contractId, invoice_data: invoiceData, fileName }
+      ]
     }));
   };
 
@@ -81,7 +78,6 @@ export function InvoicesProvider({ children }: { children: ReactNode }) {
       goodsReceipts,
       addGoodsReceipts,
       goodsReceiptMatches
-      addGoodsReceipts
     }}>
       {children}
     </InvoicesContext.Provider>
@@ -90,8 +86,8 @@ export function InvoicesProvider({ children }: { children: ReactNode }) {
 
 export function useInvoices() {
   const context = useContext(InvoicesContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useInvoices must be used within an InvoicesProvider');
   }
   return context;
-} 
+}
