@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface ReconciledInvoice {
   contract_id: string;
@@ -105,10 +105,11 @@ export function InvoicesProvider({ children }: { children: ReactNode }) {
   );
 }
 
+
 export function useInvoices() {
   const context = useContext(InvoicesContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useInvoices must be used within an InvoicesProvider');
   }
   return context;
-} 
+}

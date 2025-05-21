@@ -59,9 +59,9 @@ function InvoiceItem({ invoice }: { invoice: ReconciledInvoice }) {
           </div>
           
           <div className="flex items-center gap-2">
-            {invoice.status === 'success' && invoice.total_due && (
+            {invoice.status === 'success' && invoice.total_due !== undefined && (
               <div className="text-sm font-medium">
-                ${invoice.total_due.toFixed(2)}
+                ${Number(invoice.total_due).toFixed(2)}
               </div>
             )}
             <div className="text-2xl">

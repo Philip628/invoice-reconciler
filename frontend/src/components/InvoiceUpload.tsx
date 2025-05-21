@@ -145,6 +145,7 @@ export default function InvoiceUpload() {
       
       if (response.ok) {
         const data = await response.json();
+        const fileName = uploadedFiles.find(f => f.job_id === jobId)?.fileName;
         // Add the reconciled invoice data to the context
         addReconciledInvoice(data.contractId, data, fileName);
         console.log(`Reconciled invoice added for contract ${data.contractId}`);

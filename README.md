@@ -8,9 +8,9 @@ This is a full-stack web app showing how to use LlamaCloud with the LlamaIndex.T
 2. These are indexed and made searchable by the app
 3. The user uploads one or more invoices to the app
 4. The user uploads related purchase orders (PO) and goods receipt notes (GRN)
-5. The app determines which contract each invoice applies to and matches it against the PO and GRN
-6. It examines the terms of the contract and the invoice details and flags any discrepancies
-7. It shows the user the results
+5. GRNs are automatically matched to purchase orders and to invoices
+6. Each invoice is matched to the correct contract and the two are reconciled
+7. The app flags any discrepancies and shows the results
 
 ## Under the hood
 

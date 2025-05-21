@@ -10,7 +10,7 @@ import { useInvoices } from '@/context/InvoicesContext';
 export default function POUpload({ className }: { className?: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const [success, setSuccess] = useState('');
-  const { addPurchaseOrders } = useInvoices();
+  const { addPurchaseOrders, purchaseOrders } = useInvoices();
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -90,7 +90,18 @@ export default function POUpload({ className }: { className?: string }) {
               <AlertDescription>{success}</AlertDescription>
             </Alert>
           )}
-
+          {purchaseOrders.length > 0 && (
+            <div className="space-y-2 mt-4">
+              <p className="font-medium">Uploaded POs:</p>
+              <ul className="space-y-1 text-sm">
+                {purchaseOrders.map((file, idx) => (
+                  <li key={idx} className="bg-gray-100 p-2 rounded">
+                    {file.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <Button type="submit" className="w-full" disabled={files.length === 0}>
             Add Purchase Orders
           </Button>
