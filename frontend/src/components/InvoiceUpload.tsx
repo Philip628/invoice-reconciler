@@ -116,6 +116,8 @@ export default function InvoiceUpload() {
 
   // Function to start the reconciliation process
   const startReconciliation = async (jobId: string) => {
+    const entry = uploadedFiles.find(f => f.job_id === jobId);
+    const fileName = entry?.fileName;
     const apiKey = localStorage.getItem('apiKey');
     const indexId = localStorage.getItem('index_id');
     const projectId = localStorage.getItem('project_id');

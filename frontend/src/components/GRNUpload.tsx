@@ -25,6 +25,7 @@ export default function GRNUpload({ className }: { className?: string }) {
     }
   };
 
+  const removeFile
   const removeFile = (index: number) => {
     setFiles(prev => prev.filter((_, i) => i !== index));
   };
@@ -90,6 +91,7 @@ export default function GRNUpload({ className }: { className?: string }) {
               <AlertDescription>{success}</AlertDescription>
             </Alert>
           )}
+
           {goodsReceipts.length > 0 && (
             <div className="space-y-2 mt-4">
               <p className="font-medium">Uploaded GRNs:</p>
@@ -102,6 +104,7 @@ export default function GRNUpload({ className }: { className?: string }) {
               </ul>
             </div>
           )}
+
           <Button type="submit" className="w-full" disabled={files.length === 0}>
             Add Goods Receipts
           </Button>
