@@ -25,7 +25,6 @@ export default function GRNUpload({ className }: { className?: string }) {
     }
   };
 
-  const removeFile
   const removeFile = (index: number) => {
     setFiles(prev => prev.filter((_, i) => i !== index));
   };

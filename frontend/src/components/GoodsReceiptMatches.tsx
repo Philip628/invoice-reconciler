@@ -7,7 +7,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
 import { useInvoices } from '@/context/InvoicesContext';
 
-export default function GRNUpload({ className }: { className?: string }) {
+export default function GoodsReceiptMatches({ className }: { className?: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const [success, setSuccess] = useState('');
   const { addGoodsReceipts, goodsReceipts } = useInvoices();
@@ -25,7 +25,6 @@ export default function GRNUpload({ className }: { className?: string }) {
     }
   };
 
-  const removeFile
   const removeFile = (index: number) => {
     setFiles(prev => prev.filter((_, i) => i !== index));
   };
